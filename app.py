@@ -41,7 +41,7 @@ def get_secret_token():
   token = os.getenv("SECRET_TOKEN")
 
   if token == "":
-    print("💣 Ce token n'a pas de valeur !")
+    print("💣 Ce token n'a pas de valeur définie !")
     set_secret_token()
 
   if not token:
@@ -74,10 +74,29 @@ def set_secret_token(url=None):
         with open(".env", "w") as f:
           f.write("")
 
-      # Enregistrer le token dans le fichier .env
+      # Lire le contenu du fichier .env
+      with open(".env", "r") as f:
+        lines = f.readlines()
+
+      # Mettre à jour ou ajouter la ligne SECRET_TOKEN=
+      new_lines = []
+      token_exists = False
+      for line in lines:
+        if line.startswith("SECRET_TOKEN="):
+          new_lines.append(f"SECRET_TOKEN={secret_token}\n")
+          token_exists = True
+          break
+
+      # Si token n'existe pas => l'ajouter
+      if not token_exists:
+        lines.append(f"SECRET_TOKEN={secret_token}\n")
+
+      # Réécrire le fichier .env
+      with open(".env", "w") as f:
+        f.writelines(lines)
+
+      # Enregistrer token dans .env
       os.environ["SECRET_TOKEN"] = secret_token
-      with open(".env", "a") as f:
-        f.write(f"SECRET_TOKEN={secret_token}\n")
       print("✅ Token enregistré dans le fichier .env")
 
       # Quitter la boucle si un token est saisi
@@ -195,7 +214,7 @@ def api_call(url=None):
         convert_json_to_parquet(json_data)
 
       elif response.status_code == 401:
-        print("💥 Unauthorized request !")
+        print("💥 Unauthorized request ! Essayez avec un token...")
         set_secret_token(url)
         return
 
