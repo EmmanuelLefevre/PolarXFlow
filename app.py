@@ -45,10 +45,10 @@ def get_secret_token():
 
   if not token:
     print("💣 Aucun token trouvé dans le fichier .env.")
-    response = input("🏁 Avez-vous un secret token secret à fournir ? (O/n) : ").strip().lower()
+    response = input("🏁 Avez-vous un token à renseigner ? (O/n) : ").strip().lower()
 
     if response in ["o", ""]:
-      token = input("Entrez votre secret token : ").strip()
+      token = input("Entrez votre token : ").strip()
 
   return token
 
@@ -62,7 +62,7 @@ def set_secret_token(url):
   last_url = url
 
   while True:
-    secret_token = input("💥 Unauthorized request ! Entrez un secret token ('fin' pour quitter) : ").strip()
+    secret_token = input("Entrez votre token ('fin' pour quitter) : ").strip()
 
     if secret_token.lower() == "fin":
       leave()
@@ -194,6 +194,7 @@ def api_call(url=None):
         convert_json_to_parquet(json_data)
 
       elif response.status_code == 401:
+        print("💥 Unauthorized request !")
         set_secret_token(url)
         return
 
