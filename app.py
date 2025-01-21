@@ -19,6 +19,15 @@ tkInstance.withdraw()
 
 
 
+##############################################
+##### Fonction pour quitter le programme #####
+##############################################
+def leave():
+  print("👋 Programme terminé.")
+  sys.exit(0)
+
+
+
 ###################################################
 ##### Fonction pour récupérer le secret token #####
 ###################################################
@@ -49,12 +58,19 @@ def get_secret_token():
 def api_call():
   while True:
     # Saisie de l'URL
-    url = input("Entrez l'URL de l'API que vous souhaitez scrapper : ").strip()
+    url = input("Entrez l'URL de l'API que vous souhaitez scrapper ('fin' pour quitter) : ").strip()
+
+    if url.lower() == "fin":
+      leave()
 
     # Vérification de l'URL
     if not (url.startswith("https://") or url.startswith("http://")):
       print("💣 URL invalide !")
-      continue
+      url = input("Saisir une autre URL ('fin' pour quitter) : ").strip()
+      if url.lower() == "fin":
+        leave()
+      else:
+        continue
     break
 
   try:
