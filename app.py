@@ -117,7 +117,7 @@ def set_secret_token(url=None):
 ########################################################
 def save_file(df):
   try:
-    print("📂 Veuillez sélectionner un emplacement pour sauvegarder le fichier.")
+    print("📂 Sélectionner un emplacement pour sauvegarder le fichier.")
     save_path = asksaveasfilename(
       title="Enregistrer le fichier Parquet",
       defaultextension=".parquet",
@@ -137,7 +137,7 @@ def save_file(df):
       df.to_parquet(save_path, engine="pyarrow", index=False)
       print(f"📄 {filename}{extension} enregistré sous: {save_path}")
     else:
-      print("❌ Action annulée par l'utilisateur. Programme terminé.")
+      print("❌ Sauvegarde annulée par l'utilisateur...")
 
   except PermissionError:
     print("💣 Fichier ouvert, assurez-vous que celui-ci est fermé !")
@@ -166,6 +166,26 @@ def convert_json_to_parquet(json_data):
     print(f"💣 Erreur de conversion : {ve}")
   except Exception as e:
     print(f"💥 Une erreur s'est produite : {e}")
+
+
+
+#################################################################
+##### Fonction pour choisir le nombre de résultats par page #####
+#################################################################
+def get_results_per_page():
+  while True:
+    try:
+      results_per_page = input("Combien de résultats par requête souhaitez-vous récupérer ? (max 100) : ").strip()
+
+      # Vérification que l'entrée est un entier
+      results_per_page = int(results_per_page)
+      # Dans la limite de 100
+      if results_per_page < 1 or results_per_page > 100:
+        print("💣 Saisir un nombre entre 1 et 100 !")
+      else:
+        return results_per_page
+    except ValueError:
+      print("💣 Saisir entrer un nombre entier !")
 
 
 
@@ -207,19 +227,22 @@ def api_call(url=None):
         "Accept": "application/vnd.github.v3+json"
       }
 
+      # Nombre de résultats par page
+      results_per_page = get_results_per_page()
       # Initialiser la page actuelle à 1
       page = 1
+      # Liste des résultats
       results = []
 
       while True:
         # Ajouter paramètre de pagination à l'URL
-        paginated_url = f"{url}?page={page}&per_page=100"
+        paginated_url = f"{url}?page={page}&per_page=={results_per_page}"
 
         response = requests.get(paginated_url, headers=headers)
 
         # Response
         if response.status_code == 200:
-          print("👌 Données récupérées...")
+          print(f"👌 Données récupérées... Page : {page}")
           json_data = response.json()
           # Ajouter les résultats de la page actuelle à la liste globale
           results.extend(json_data)
