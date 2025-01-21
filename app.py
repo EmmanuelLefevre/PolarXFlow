@@ -116,8 +116,10 @@ def convert_json_to_parquet(json_data):
 ##### Fonction pour choisir l'URL à scrapper #####
 ##################################################
 def api_call():
+  invalid_url = False
+
   while True:
-    if 'invalid_url' not in locals():
+    if not invalid_url:
       prompt_message = "Entrez l'URL de l'API que vous souhaitez scrapper ('fin' pour quitter) : "
     else:
       prompt_message = "Saisir une autre URL ('fin' pour quitter) : "
@@ -129,7 +131,7 @@ def api_call():
       leave()
 
     if not (url.startswith("https://") or url.startswith("http://")):
-      if 'invalid_url' not in locals():
+      if not invalid_url:
         invalid_url = True
       print("💣 URL invalide !")
       continue
