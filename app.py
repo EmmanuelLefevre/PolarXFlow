@@ -102,7 +102,7 @@ def set_secret_token(url=None):
 
       # Enregistrer token dans .env
       os.environ["SECRET_TOKEN"] = secret_token
-      print("✅ Token enregistré dans le fichier .env")
+      print("✅ Token enregistré dans .env")
 
       # Quitter la boucle si un token est saisi
       break
@@ -135,7 +135,6 @@ def save_file(df):
 
       # Sauvegarder le DataFrame au chemin sélectionné
       df.to_parquet(save_path, engine="pyarrow", index=False)
-      print("\n")
       print(f"📄 {filename}{extension} enregistré sous: {save_path}")
     else:
       print("❌ Action annulée par l'utilisateur. Programme terminé.")
@@ -217,6 +216,14 @@ def api_call(url=None):
 
         # Appeler la fonction pour convertir en Parquet
         convert_json_to_parquet(json_data)
+
+        # Après l'enregistrement du fichier, demander une nouvelle URL
+        response = input("Souhaitez-vous saisir une nouvelle URL ? (O/n) : ").strip().lower()
+
+        if response == "n":
+          leave()
+        else:
+          api_call()
 
       elif response.status_code == 401:
         print("💥 Unauthorized request ! Essayez avec un token...")
