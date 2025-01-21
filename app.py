@@ -41,7 +41,8 @@ def get_secret_token():
   token = os.getenv("SECRET_TOKEN")
 
   if token == "":
-    print("💣 Token vide !")
+    print("💣 Ce token n'a pas de valeur !")
+    set_secret_token()
 
   if not token:
     print("💣 Aucun token trouvé dans le fichier .env.")
@@ -57,7 +58,7 @@ def get_secret_token():
 ####################################################
 ##### Fonction pour renseigner un secret token #####
 ####################################################
-def set_secret_token(url):
+def set_secret_token(url=None):
   global last_url
   last_url = url
 
