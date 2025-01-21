@@ -54,6 +54,33 @@ def get_secret_token():
 
 
 
+####################################################
+##### Fonction pour renseigner un secret token #####
+####################################################
+def set_secret_token():
+  while True:
+    secret_token = input("💥 Unauthorized request ! Entrez un secret token ('fin' pour quitter) : ").strip()
+
+    if secret_token.lower() == "fin":
+      leave()
+
+    if secret_token:
+      # Créer le fichier .env uniquement si un token est fourni
+      if not os.path.exists(".env"):
+        with open(".env", "w") as f:
+          f.write("")
+
+      # Enregistrer le token dans le fichier .env
+      os.environ["SECRET_TOKEN"] = secret_token
+      with open(".env", "a") as f:
+        f.write(f"SECRET_TOKEN={secret_token}\n")
+      print("✅ Token enregistré dans le fichier .env")
+
+      # Quitter la boucle si un token est saisi
+      break
+
+
+
 ########################################################
 ##### Fonction pour enregistrer le fichier Parquet #####
 ########################################################
@@ -80,7 +107,7 @@ def save_file(df):
       print("\n")
       print(f"📄 {filename}{extension} enregistré sous: {save_path}")
     else:
-      print("❌ Aucune sauvegarde effectuée. Programme terminé.")
+      print("❌ Action annulée par l'utilisateur. Programme terminé.")
 
   except PermissionError:
     print("💣 Fichier ouvert, assurez-vous que celui-ci est fermé !")
