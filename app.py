@@ -246,7 +246,7 @@ def detect_data_format(response):
   try:
     # Tenter de parser les données en JSON
     response.json()
-    print(f"{Style.BRIGHT}{Fore.GREEN}📄 Format détecté : JSON{Style.RESET_ALL}")
+    print(f"{Style.BRIGHT}{Fore.CYAN}📄 Format détecté : JSON{Style.RESET_ALL}")
     return "json"
   except ValueError:
     # Si ce n'est pas du JSON, on continue
@@ -258,7 +258,7 @@ def detect_data_format(response):
   # Vérifier si contenu CSV (par la présence de virgules ou délimiteurs)
   content = response.text.strip()
   if content and any(delim in content for delim in delimiters):
-    print(f"{Style.BRIGHT}{Fore.GREEN}📄 Format détecté : CSV{Style.RESET_ALL}")
+    print(f"{Style.BRIGHT}{Fore.CYAN}📄 Format détecté : CSV{Style.RESET_ALL}")
     return "csv"
 
   # Si aucun format reconnu
@@ -332,7 +332,7 @@ def api_call(url=None):
               print(f"{Style.BRIGHT}{Fore.RED}💣 Format non détecté : {ve}{Style.RESET_ALL}")
               return
 
-          print(f"{Style.BRIGHT}{Fore.GREEN}👌 Données récupérées... Page : {page}{Style.RESET_ALL}")
+          print(f"{Style.BRIGHT}{Fore.CYAN}👌 Données récupérées... Page : {page}{Style.RESET_ALL}")
 
           if data_format == "json":
             json_data = response.json()
