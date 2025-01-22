@@ -158,7 +158,7 @@ def convert_json_to_parquet(json_data):
   try:
     # Vérifier si le JSON est bien une liste ou un dictionnaire
     if not isinstance(json_data, (list, dict)):
-      raise ValueError(f"{Style.BRIGHT}{Fore.RED}💣 Les données JSON doivent être une liste ou un dictionnaire !{Style.RESET_ALL}")
+      raise ValueError(f"{Style.BRIGHT}{Fore.RED}💣 Format JSON incorrect !{Style.RESET_ALL}")
 
     # Convertir le JSON en DataFrame Pandas
     df = pd.DataFrame(json_data)
@@ -268,7 +268,7 @@ def api_call(url=None):
           return
 
         else:
-          print(f"{Style.BRIGHT}{Fore.RED}Échec avec le code de statut {response.status_code} : {response.text}{Style.RESET_ALL}")
+          print(f"{Style.BRIGHT}{Fore.MAGENTA}Échec avec le code de statut {response.status_code} : {response.text}{Style.RESET_ALL}")
 
       # Appeler la fonction pour convertir en Parquet
       convert_json_to_parquet(results)
@@ -284,7 +284,7 @@ def api_call(url=None):
     except ValueError as ve:
       print(ve)
     except requests.exceptions.RequestException as e:
-      print(f"{Style.BRIGHT}{Fore.RED}Erreur lors de l'appel à l'API : {e}{Style.RESET_ALL}")
+      print(f"{Style.BRIGHT}{Fore.RED}Erreur lors de la requête : {e}{Style.RESET_ALL}")
 
 
 
@@ -303,7 +303,7 @@ if __name__ == "__main__":
   try:
     main()
   except KeyboardInterrupt:
-    print(f"{Style.BRIGHT}{Fore.RED}👋 Opération interrompue par l'utilisateur. Programme terminé.{Style.RESET_ALL}")
+    print(f"{Style.BRIGHT}{Fore.BLUE}👋 Opération interrompue par l'utilisateur. Programme terminé.{Style.RESET_ALL}")
   finally:
     tkInstance.quit()
     tkInstance.destroy()
