@@ -304,10 +304,12 @@ def api_call(url=None):
         "Accept": "application/vnd.github.v3+json"
       }
 
-      # Nombre de résultats par page
-      results_per_page = get_results_per_page()
       # Initialiser la page actuelle à 1
       page = 1
+      # Nombre de résultats par page
+      results_per_page = get_results_per_page()
+      # Si type de données déjà affiché
+      data_type_detected = False
       # Liste des résultats JSON
       json_results = []
       # String données CSV
@@ -321,14 +323,16 @@ def api_call(url=None):
 
         # Response
         if response.status_code == 200:
-          print(f"{Style.BRIGHT}{Fore.GREEN}👌 Données récupérées... Page : {page}{Style.RESET_ALL}")
-
           # Détecter le format des données
-          try:
-            data_format = detect_data_format(response)
-          except ValueError as ve:
-            print(f"{Style.BRIGHT}{Fore.RED}💣 Format non détecté : {ve}{Style.RESET_ALL}")
-            return
+          if not data_type_detected:
+            try:
+              data_format = detect_data_format(response)
+              data_type_detected = True
+            except ValueError as ve:
+              print(f"{Style.BRIGHT}{Fore.RED}💣 Format non détecté : {ve}{Style.RESET_ALL}")
+              return
+
+          print(f"{Style.BRIGHT}{Fore.GREEN}👌 Données récupérées... Page : {page}{Style.RESET_ALL}")
 
           if data_format == "json":
             json_data = response.json()
