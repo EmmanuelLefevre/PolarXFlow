@@ -68,12 +68,18 @@ python app.py
 ```
 4. URL de test
 - JSON
+**Avec paramètres de page**  
 URL de test permettant de récupérer tous les contributeurs du projet VsCode sur github.com
 ```bash
 https://api.github.com/repos/microsoft/vscode/contributors
 ```
+**Sans paramètres de page**  
+URL de test permettant de récupérer, depuis l'API du gouvernement américain, la population américaine par année.
+```bash
+https://datausa.io/api/data?drilldowns=Nation&measures=Population
+```
 - CSV
-URL de test permettant de récupérer la population américaine par année
+URL de test permettant de récupérer mondialement, depuis l'API de la NASA, les points d'impact des météorites (+ autres données associées).
 ```bash
 https://datausa.io/api/data?drilldowns=Nation&measures=Population
 ```
