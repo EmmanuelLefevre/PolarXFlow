@@ -81,7 +81,7 @@ https://datausa.io/api/data?drilldowns=Nation&measures=Population
 - CSV
 URL de test permettant de récupérer mondialement, depuis l'API de la NASA, les points d'impact des météorites (+ autres données associées).
 ```bash
-https://datausa.io/api/data?drilldowns=Nation&measures=Population
+
 ```
 5. Les fichiers Parquet des exemples ci dessus sont disponibles dans le dossier "data_frame".
 
