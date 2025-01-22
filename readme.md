@@ -70,7 +70,7 @@ python app.py
 ```bash
 https://api.github.com/repos/microsoft/vscode/contributors
 ```
-5. Le Data Frame de l'exemple au dessus est disponible dans le dossier "data_frame".
+5. Le fichier Parquet de l'exemple ci dessus est disponible dans le dossier "data_frame".
 
 ***
 
