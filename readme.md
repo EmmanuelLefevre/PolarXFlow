@@ -59,13 +59,13 @@ Vérifier l'installation des librairies
 ```bash
 pip list
 ```
-2. Créer un .env à partir du .env.template et changer **MANUELLEMENT** les valeurs pertinentes
-```bash
-cp .env.template .env
-```
-3. Lancer l'application python
+2. Lancer l'application python
 ```bash
 python app.py
+```
+3. URL de test permettant de récupérer tous les contributeurs du projet VsCode sur github.com
+```bash
+https://api.github.com/repos/microsoft/vscode/contributors
 ```
 
 ***
