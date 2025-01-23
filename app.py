@@ -350,9 +350,11 @@ def api_call(url=None):
 
       # Ajout du header
       headers = {
-        "Authorization": f"Bearer {token}",
         "Accept": "application/json, application/csv"
       }
+      # Si token on l'ajoute au header
+      if token:
+        headers["Authorization"] = f"Bearer {token}"
 
       # Initialiser la variable avant chaque boucle
       page = 1
