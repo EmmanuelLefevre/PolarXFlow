@@ -79,9 +79,10 @@ URL de test permettant de récupérer, depuis l'API du gouvernement américain, 
 https://datausa.io/api/data?drilldowns=Nation&measures=Population
 ```
 - CSV
+**Avec paramètres de limite**  
 URL de test permettant de récupérer mondialement, depuis l'API de la NASA, les points d'impact des météorites (+ autres données associées).
 ```bash
-https://data.nasa.gov/resource/gh4g-9sfh.csv?$query=SELECT%0A%20%20%60name%60%2C%0A%20%20%60id%60%2C%0A%20%20%60nametype%60%2C%0A%20%20%60recclass%60%2C%0A%20%20%60mass%60%2C%0A%20%20%60fall%60%2C%0A%20%20%60year%60%2C%0A%20%20%60reclat%60%2C%0A%20%20%60reclong%60%2C%0A%20%20%60geolocation%60
+https://data.nasa.gov/resource/gh4g-9sfh.csv?$limit=50000
 ```
 5. Les fichiers Parquet des exemples ci dessus sont disponibles dans le dossier "data_frame".
 
