@@ -1,4 +1,4 @@
-# POLARSFLOW
+# PARQUETFLOW
 
 ## SOMMAIRE
 - [INTRODUCTION](#introduction)
@@ -16,8 +16,7 @@ Les fonctionnalités incluent :
 - Ajouter d'un token d'authentification à la requête, si cela est nécessaire, afin d'accéder aux données.
 - De plus il est possible d'enregistrer ce token en variable d'environnement pour une utilisation ultérieure.  
 
-Cet outil est idéal pour les développeurs, data engineers ou analystes cherchant à automatiser la gestion de leurs flux de données. Il répond particulièrement bien aux besoins des projets nécessitant une gestion performante et évolutive des données tabulaires.  
-Le format Parquet est conçu pour s'intégrer efficacement avec un moteur comme PolarX (ou DuckDB), grâce à sa nature orientée colonne et à ses capacités avancées de compression.
+Cet outil est idéal pour les développeurs, data engineers ou analystes cherchant à automatiser la gestion de leurs flux de données. Il répond particulièrement bien aux besoins des projets nécessitant une gestion performante et évolutive des données tabulaires.
 
 ## PYTHON
 [Télécharger Python 3.13.1](https://www.python.org/downloads/)  
