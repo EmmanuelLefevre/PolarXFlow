@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: raw
+    tables:
+      - name: contributors
+        description: "Table brute des contributeurs extraite depuis l'API GitHub."
+      - name: commits
+        description: "Table brute des commits extraite depuis l'API GitHub."
+      - name: pulls
+        description: "Table brute des pull requests extraite depuis l'API GitHub."
+      - name: tags
+        description: "Table brute des tags extraite depuis l'API GitHub."
+      - name: contents
+        description: "Table brute des contenus extraite depuis l'API GitHub."

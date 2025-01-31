@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: contributors
+    description: "Table des contributeurs de VSCode"
+  - name: commits
+    description: "Table des commits de VSCode"
+  - name: pulls
+    description: "Table des pull requests de VSCode"
+  - name: tags
+    description: "Table des tags de VSCode"
+  - name: contents
+    description: "Table des contenus de VSCode"

@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: dim_contributors
+    description: "Dimension des contributeurs de VSCode."
+  - name: dim_commits
+    description: "Dimension des commits de VSCode."
+  - name: dim_pull_requests
+    description: "Dimension des pull requests de VSCode."
+  - name: dim_tags
+    description: "Dimension des tags de VSCode."
+  - name: dim_contents
+    description: "Dimension des contenus de VSCode."
+  - name: fact_activity
+    description: "Table de faits combinant les dimensions pour analyser l'activité globale."

@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: contributors_cleaned
+    description: "Données nettoyées des contributeurs du dépôt VSCode"
+  - name: commits_cleaned
+    description: "Données nettoyées des commits du dépôt VSCode"
+  - name: pulls_cleaned
+    description: "Données nettoyées des pull requests du dépôt VSCode"
+  - name: tags_cleaned
+    description: "Données nettoyées des tags du dépôt VSCode"
+  - name: contents_cleaned
+    description: "Données nettoyées des contenus du dépôt VSCode"
